@@ -1,0 +1,144 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupTool", "sourceBackup\ProjectSourceBackupTool.csproj", "{265A1F96-863E-44E9-B273-C0790B7A1B66}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ProjectSourceBackupToolSetup", "sourceBackupSetup\ProjectSourceBackupToolSetup.vdproj", "{32356CFA-5253-40AD-9395-7246BB3E994D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSBTPortal", "http://localhost/PSBTPortal/PSBTPortal.csproj", "{C97BC611-5409-4F3C-8F7E-BBBBDC40126A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolRegistration", "ProjectSourceBackupToolRegistration\ProjectSourceBackupToolRegistration.csproj", "{74F2B292-99F7-4E42-A661-2771F4A922DA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolData", "ProjectSourceBackupToolData\ProjectSourceBackupToolData.csproj", "{5DAE59BE-49BC-4883-B275-5FB214E494EF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolLog", "ProjectSourceBackupToolLog\ProjectSourceBackupToolLog.csproj", "{630CE836-BAA4-47A6-902E-3F32332F29E8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolWeb", "ProjectSourceBackupToolWeb\ProjectSourceBackupToolWeb.csproj", "{9ED4687E-3F0D-4F66-BDF2-0DE663904337}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolOptions", "ProjectSourceBackupToolOptions\ProjectSourceBackupToolOptions.csproj", "{0D211945-9366-45BC-A096-FF386CC62B7E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolInfo", "ProjectSourceBackupToolInfo\ProjectSourceBackupToolInfo.csproj", "{78AEDB04-5293-4402-BBAD-FF74AE6893F6}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSBTAdminInterface", "PSBTAdminInterface\PSBTAdminInterface.csproj", "{C3BA2613-DFE1-4FA7-8D17-905E6FE134A9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 11
+		SccProjectUniqueName0 = sourceBackup\\ProjectSourceBackupTool.csproj
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection0 = sourceBackup\\
+		SccProjectUniqueName1 = sourceBackupSetup\\ProjectSourceBackupToolSetup.vdproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = sourceBackupSetup\\
+		SccProjectName2 = \u0022$/PSBT/PROJSRCBACKUPTOOL\u0022,\u0020XVEAAAAA
+		SccLocalPath2 = .
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = false
+		SolutionUniqueID = {356794B5-678A-47E3-8721-DB5CFEB9FC44}
+		SccProjectUniqueName3 = http://localhost/PSBTPortal/PSBTPortal.csproj
+		SccProjectName3 = \u0022$/PSBT/PROJSRCBACKUPTOOL/PSBTPortal\u0022,\u0020XDJAAAAA
+		SccLocalPath3 = C:\\inetpub\\wwwroot\\PSBTPortal
+		CanCheckoutShared = false
+		SccProjectEnlistmentChoice3 = 2
+		SccProjectUniqueName4 = ProjectSourceBackupToolRegistration\\ProjectSourceBackupToolRegistration.csproj
+		SccLocalPath4 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection4 = ProjectSourceBackupToolRegistration\\
+		SccProjectUniqueName5 = ProjectSourceBackupToolData\\ProjectSourceBackupToolData.csproj
+		SccLocalPath5 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection5 = ProjectSourceBackupToolData\\
+		SccProjectUniqueName6 = ProjectSourceBackupToolLog\\ProjectSourceBackupToolLog.csproj
+		SccLocalPath6 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection6 = ProjectSourceBackupToolLog\\
+		SccProjectUniqueName7 = ProjectSourceBackupToolWeb\\ProjectSourceBackupToolWeb.csproj
+		SccLocalPath7 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection7 = ProjectSourceBackupToolWeb\\
+		SccProjectUniqueName8 = ProjectSourceBackupToolOptions\\ProjectSourceBackupToolOptions.csproj
+		SccLocalPath8 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection8 = ProjectSourceBackupToolOptions\\
+		SccProjectUniqueName9 = ProjectSourceBackupToolInfo\\ProjectSourceBackupToolInfo.csproj
+		SccLocalPath9 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection9 = ProjectSourceBackupToolInfo\\
+		SccProjectUniqueName10 = PSBTAdminInterface\\PSBTAdminInterface.csproj
+		SccLocalPath10 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection10 = PSBTAdminInterface\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Description = Compresses source code into single file for backup purposes.
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Debug.ActiveCfg = Debug|.NET
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Debug.Build.0 = Debug|.NET
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Release.ActiveCfg = Release|.NET
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Release.Build.0 = Release|.NET
+		{32356CFA-5253-40AD-9395-7246BB3E994D}.Debug.ActiveCfg = Debug
+		{32356CFA-5253-40AD-9395-7246BB3E994D}.Release.ActiveCfg = Release
+		{32356CFA-5253-40AD-9395-7246BB3E994D}.Release.Build.0 = Release
+		{C97BC611-5409-4F3C-8F7E-BBBBDC40126A}.Debug.ActiveCfg = Debug|.NET
+		{C97BC611-5409-4F3C-8F7E-BBBBDC40126A}.Debug.Build.0 = Debug|.NET
+		{C97BC611-5409-4F3C-8F7E-BBBBDC40126A}.Release.ActiveCfg = Release|.NET
+		{C97BC611-5409-4F3C-8F7E-BBBBDC40126A}.Release.Build.0 = Release|.NET
+		{74F2B292-99F7-4E42-A661-2771F4A922DA}.Debug.ActiveCfg = Debug|.NET
+		{74F2B292-99F7-4E42-A661-2771F4A922DA}.Debug.Build.0 = Debug|.NET
+		{74F2B292-99F7-4E42-A661-2771F4A922DA}.Release.ActiveCfg = Release|.NET
+		{74F2B292-99F7-4E42-A661-2771F4A922DA}.Release.Build.0 = Release|.NET
+		{5DAE59BE-49BC-4883-B275-5FB214E494EF}.Debug.ActiveCfg = Debug|.NET
+		{5DAE59BE-49BC-4883-B275-5FB214E494EF}.Debug.Build.0 = Debug|.NET
+		{5DAE59BE-49BC-4883-B275-5FB214E494EF}.Release.ActiveCfg = Release|.NET
+		{5DAE59BE-49BC-4883-B275-5FB214E494EF}.Release.Build.0 = Release|.NET
+		{630CE836-BAA4-47A6-902E-3F32332F29E8}.Debug.ActiveCfg = Debug|.NET
+		{630CE836-BAA4-47A6-902E-3F32332F29E8}.Debug.Build.0 = Debug|.NET
+		{630CE836-BAA4-47A6-902E-3F32332F29E8}.Release.ActiveCfg = Release|.NET
+		{630CE836-BAA4-47A6-902E-3F32332F29E8}.Release.Build.0 = Release|.NET
+		{9ED4687E-3F0D-4F66-BDF2-0DE663904337}.Debug.ActiveCfg = Debug|.NET
+		{9ED4687E-3F0D-4F66-BDF2-0DE663904337}.Debug.Build.0 = Debug|.NET
+		{9ED4687E-3F0D-4F66-BDF2-0DE663904337}.Release.ActiveCfg = Release|.NET
+		{9ED4687E-3F0D-4F66-BDF2-0DE663904337}.Release.Build.0 = Release|.NET
+		{0D211945-9366-45BC-A096-FF386CC62B7E}.Debug.ActiveCfg = Debug|.NET
+		{0D211945-9366-45BC-A096-FF386CC62B7E}.Debug.Build.0 = Debug|.NET
+		{0D211945-9366-45BC-A096-FF386CC62B7E}.Release.ActiveCfg = Release|.NET
+		{0D211945-9366-45BC-A096-FF386CC62B7E}.Release.Build.0 = Release|.NET
+		{78AEDB04-5293-4402-BBAD-FF74AE6893F6}.Debug.ActiveCfg = Debug|.NET
+		{78AEDB04-5293-4402-BBAD-FF74AE6893F6}.Debug.Build.0 = Debug|.NET
+		{78AEDB04-5293-4402-BBAD-FF74AE6893F6}.Release.ActiveCfg = Release|.NET
+		{78AEDB04-5293-4402-BBAD-FF74AE6893F6}.Release.Build.0 = Release|.NET
+		{C3BA2613-DFE1-4FA7-8D17-905E6FE134A9}.Debug.ActiveCfg = Debug|.NET
+		{C3BA2613-DFE1-4FA7-8D17-905E6FE134A9}.Debug.Build.0 = Debug|.NET
+		{C3BA2613-DFE1-4FA7-8D17-905E6FE134A9}.Release.ActiveCfg = Release|.NET
+		{C3BA2613-DFE1-4FA7-8D17-905E6FE134A9}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
