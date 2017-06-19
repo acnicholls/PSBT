@@ -1,5 +1,0 @@
-v1.4
-added new cmdLine option /file to save project profiles to file instead of registry
-changed about box layout to include softpedia award
-changed some reporting text on status bar panel
-
