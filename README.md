@@ -1,14 +1,7 @@
 # PSBT
 Project Source Backup Tool is a project that I started before I learned of version control, it was my way of backing up code once I was finished with a version.  Compressed files could be saved using any manner of naming convention, therefore keeping a type of source control and allowing the user to backup their projects routinely.
 
-
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Project Source Backup Tool is an easy to use source code compression utility for Visual Studio Developers.  
-
-
 ## Project Source Backup Tool features
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - supports profiles so you don't have to enter the same information again and again
 - removes debug and release folders to save space
