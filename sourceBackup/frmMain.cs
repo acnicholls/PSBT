@@ -1,20 +1,15 @@
 using System;
-using System.Drawing;
-using System.Diagnostics;
 using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Data;
-using System.Text;
 using System.IO;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace sourceBackup
 {
-	/// <summary>
-	/// Summary description for frmMain.
-	/// </summary>
-	public class frmMain : System.Windows.Forms.Form
+    /// <summary>
+    /// the main form of the application
+    /// </summary>
+    public class frmMain : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -32,24 +27,25 @@ namespace sourceBackup
 		private System.Windows.Forms.Button cmdGo;
 		private System.Windows.Forms.MainMenu menuMain;
 		private System.Windows.Forms.MenuItem mnuContents;
-		private static bool debugMode = false;
 		private System.Windows.Forms.MenuItem mnuProjectProfiles;
 		private System.Windows.Forms.MenuItem mnuSepProjects;
 		private System.Windows.Forms.MenuItem mnuProfile;
-		public static string[] parts = new string[5];
 		private System.Windows.Forms.MenuItem mnuDeleteProfile;
 		private System.Windows.Forms.MenuItem mnuSaveProfile;
 		private System.Windows.Forms.MenuItem mnuClear;
 		private System.Windows.Forms.MenuItem mnuSepMain;
 		private System.Windows.Forms.StatusBar sbMainStatusBar;
 		public System.Windows.Forms.StatusBarPanel sbMainPanel1;
+		private System.Windows.Forms.Label lblBackupFileName;
+		private System.Windows.Forms.MenuItem miMainDefault;
+        // non component properties
 		private ArrayList removeList = new ArrayList(5);
 		private bool CompileFound = false;
-		private System.Windows.Forms.Label lblBackupFileName;
 		private bool validCompress = true;
 		private static bool fileMode = false;
-		private System.Windows.Forms.MenuItem miMainDefault;
-	 // file/registry boolean
+		private static bool debugMode = false;
+		public static string[] parts = new string[5];
+
 		public string StatusBarText
 		{
 			get { string send = sbMainPanel1.Text;
@@ -68,21 +64,6 @@ namespace sourceBackup
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-
-			//
-			// DONETODO: Add any constructor code after InitializeComponent call
-			//
-			// DONETODO: add registry keys that save the backup locations for certain project profiles.
-			// DONETODO: re-arrange interface to make better sense
-			// DONETODO: autmatic finding of debug and release folders under the current project directory.
-			// TODO: have a "backups location" saved to registry
-			// DONETODO: add my own compression.
-			// DONETODO: contact geralgibson RE: using his compression package.
-
-
-			// this function writes a log of important info and is useful for debugging
-
-			//DONETODO: replace this with a registry call to the proper location.
 		}
 
 		/// <summary>
@@ -371,32 +352,6 @@ namespace sourceBackup
 		[STAThread]
 		static void Main() 
 		{
-
-
-///This is my first attempt at licensing.  
-///CODE : c0cbe7cb-23de-4b3c-ac36-627cfd8eef24
-///KEY : 9940c1d7-ec41-455a-be84-c5eebd4d811d
-/// fff
-/// *
-/// *
-/// In some way the key must unlock the code, allowing the user to continue to run the program, 
-/// If it does not, then the program will close.
-/// *
-/// *
-/// my first assumption is that when the KEY has undergone a certian 
-/// calculation, then it will match the code?  
-/// *
-/// second, it could be that using the code to unravel the key 
-/// will equal a predefined third set of characters.
-/// 
-			string stringKey = "9940c1d7-ec41-455a-be84-c5eebd4d811d";
-			string stringCode = "c0cbe7cb-23de-4b3c-ac36-627cfd8eef24";
-			System.Text.Encoding enc = Encoding.Unicode;
-			Security licence = new Security();
-			byte[] arrKEY = licence.ConvertKeyStringToByteArray(stringCode);
-			string KEYString = licence.ConvertByteArrayToKeyString(arrKEY);
-			byte[] arrHASH = licence.GetSHA1Hash(arrKEY);
-///  save this for later to put into an if statement on a check against the license file text.
 			string[] cmdLine = System.Environment.GetCommandLineArgs();
 			if(cmdLine.Length > 1)
 			{
@@ -418,10 +373,7 @@ namespace sourceBackup
 				}
 			}
 			
-			WriteLog("Entering Main Sequence.");
-			string hashedValue = licence.CalculateSHA1(KEYString, enc);
-			WriteLog("This is your managed cipher's value?  " + hashedValue);
-			WriteLog("This is your managed cipher's length?  " + hashedValue.Length.ToString());
+			WriteLog("Entering Main Form.");
 			Application.Run(new frmMain());
 		}
 		/// <summary>
@@ -538,12 +490,6 @@ namespace sourceBackup
 			{
 				file += ".zip";
 			}
-			// check the destination so for spaces
-//			if(dest.IndexOf(" ") != -1)
-//			{
-//				//we got a space in the path so wrap it in double qoutes
-//				dest = "\"" + txtBackupLocation.Text + "\"";
-//			}
 			// check for valid source folder
 			DirectoryInfo checkSource = new DirectoryInfo(source);
 			if(!checkSource.Exists)
@@ -803,7 +749,6 @@ namespace sourceBackup
 		private void mnuClear_Click(object sender, System.EventArgs e)
 		{
 			WriteLog("Got to mnuClear_Click");
-			//DONETODO: Clear the form and declare a new profile array.
 			this.chkDebug.Checked = false;
 			this.txtBackupLocation.Text = "";
 			this.txtBackupName.Text = "";

@@ -1,28 +1,25 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using System.IO;
 
 namespace sourceBackup
 {
-	/// <summary>
-	/// Summary description for Form2.
-	/// </summary>
-	public class frmProfile : System.Windows.Forms.Form
+    /// <summary>
+    /// Profile form.  Saves profile data to registry or file
+    /// </summary>
+    public class frmProfile : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtProfileName;
 		private System.Windows.Forms.Button cmdGo;
+		private System.Windows.Forms.Button cmdCancel;
 
 		private string project;
 		private string backup;
 		private string zipName;
 		private string debug;
 		private string profileName;
-		private System.Windows.Forms.Button cmdCancel;
 		private bool fileMode = false;
 
 		/// <summary>
@@ -30,6 +27,9 @@ namespace sourceBackup
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
+        /// <summary>
+        /// default contructor
+        /// </summary>
 		public frmProfile()
 		{
 			//
@@ -40,6 +40,11 @@ namespace sourceBackup
 			//
 			//
 		}
+
+        /// <summary>
+        /// non-default constructor.  assigns values to local properties depending on passed values
+        /// </summary>
+        /// <param name="profileParts">string list containing the 5 parts of the profile</param>
 		public frmProfile(string[] profileParts)
 		{
 			//
@@ -57,6 +62,12 @@ namespace sourceBackup
 			debug = profileParts[4];
 
 		}
+
+        /// <summary>
+        /// non-default constructor.  assigns values to local properties depending on passed values
+        /// </summary>
+        /// <param name="profileParts">string list containing the 5 parts of the profile</param>
+        /// <param name="filemode">boolean determining whether profile is in registry or file</param>
 		public frmProfile(string[] profileParts, bool filemode)
 		{
 			//
@@ -157,6 +168,11 @@ namespace sourceBackup
 		}
 		#endregion
 
+        /// <summary>
+        /// this form's load method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void frmProfile_Load(object sender, System.EventArgs e)
 		{
 		   //DONETODO: take all the passed variables and assign them locally?
@@ -164,6 +180,11 @@ namespace sourceBackup
 				this.txtProfileName.Text = profileName.ToString();
 		}
 
+        /// <summary>
+        /// saves the profile data either to file or to registry, depending on user options.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void cmdGo_Click(object sender, System.EventArgs e)
 		{
 
@@ -273,11 +294,21 @@ namespace sourceBackup
 				
 		}
 
+        /// <summary>
+        /// closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void cmdCancel_Click(object sender, System.EventArgs e)
 		{
 			this.Close();
 		}
 
+        /// <summary>
+        /// checks the supplied filename for invalid windows filename characters
+        /// </summary>
+        /// <param name="filename">the string to check</param>
+        /// <returns>true/false</returns>
 		private bool CheckForInvalidChars(string filename)
 		{
 

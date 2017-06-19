@@ -1,18 +1,14 @@
 using System;
-using System.Drawing;
 using System.Diagnostics;
 using System.Reflection;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace sourceBackup
 {
 
-	/// <summary>
-	/// Summary description for Form3.
-	/// </summary>
-	public class frmAbout : System.Windows.Forms.Form
+    /// <summary>
+    /// About form, describes the project, the author, and relevent licence data
+    /// </summary>
+    public class frmAbout : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Button cmdOK;
 		private System.Windows.Forms.Label labelVersion;
@@ -29,6 +25,9 @@ namespace sourceBackup
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
+        /// <summary>
+        /// default constructor with changes.  Instantiates local class
+        /// </summary>
 		public frmAbout()
 		{
 			//
@@ -202,6 +201,11 @@ namespace sourceBackup
 			myProcess.Dispose();
 		}
 
+        /// <summary>
+        /// closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void button1_Click(object sender, System.EventArgs e)
 		{
 			this.Close();
@@ -248,6 +252,10 @@ namespace sourceBackup
 			myProcess.Dispose();
 		}
 	}
+
+    /// <summary>
+    /// this class contains properties related to the project, it's author, version, language, etc.
+    /// </summary>
 	public class ProjectInfo
 	{
 		public string Version
