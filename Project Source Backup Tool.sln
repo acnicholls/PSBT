@@ -1,27 +1,43 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupTool", "sourceBackup\ProjectSourceBackupTool.csproj", "{265A1F96-863E-44E9-B273-C0790B7A1B66}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ProjectSourceBackupToolSetup", "sourceBackupSetup\ProjectSourceBackupToolSetup.vdproj", "{32356CFA-5253-40AD-9395-7246BB3E994D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSourceBackupToolPortal", "sourceBackupPortal\ProjectSourceBackupToolPortal.csproj", "{AFD6B106-7875-4D6A-95EC-A42A519281C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Portal|Any CPU = Portal|Any CPU
 		Release|Any CPU = Release|Any CPU
 		Description = Compresses source code into single file for backup purposes.
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Portal|Any CPU.ActiveCfg = Release|Any CPU
+		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Portal|Any CPU.Build.0 = Release|Any CPU
 		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{265A1F96-863E-44E9-B273-C0790B7A1B66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32356CFA-5253-40AD-9395-7246BB3E994D}.Debug|Any CPU.ActiveCfg = Debug
+		{32356CFA-5253-40AD-9395-7246BB3E994D}.Portal|Any CPU.ActiveCfg = Release
+		{32356CFA-5253-40AD-9395-7246BB3E994D}.Portal|Any CPU.Build.0 = Release
 		{32356CFA-5253-40AD-9395-7246BB3E994D}.Release|Any CPU.ActiveCfg = Release
 		{32356CFA-5253-40AD-9395-7246BB3E994D}.Release|Any CPU.Build.0 = Release
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Portal|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Portal|Any CPU.Build.0 = Debug|Any CPU
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD6B106-7875-4D6A-95EC-A42A519281C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {631E2C31-EB4E-4B87-8E8B-23745E3CD2BA}
 	EndGlobalSection
 EndGlobal

@@ -245,3 +245,6 @@ ModelManifest.xml
 .fake/
 
 /pullResult.txt
+
+# key for signing output assemblies
+keypair.snk

@@ -191,8 +191,8 @@ namespace sourceBackup
 		private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			string address = "";
-			address = "http://www.acnicholls.com/Support.aspx";
-			address += "?Subject=Project Source backup Tool Change Request";
+			address = "http://acnlop.dyndns.org/?op=support";
+			//address += "?Subject=Project Source backup Tool Change Request";
 			Process myProcess = new Process();
 			myProcess.StartInfo.FileName = address;
 			myProcess.StartInfo.UseShellExecute = true;
