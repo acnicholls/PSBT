@@ -19,10 +19,10 @@ namespace sourceBackup.Portal.Areas.Mail
 
         #region Private Variables
 
-        private string _gmailServer => _appSettings.GetAppSetting("smtpServer", false);
-        private long _gmailPort => Convert.ToInt64(_appSettings.GetAppSetting("smtpPort", false));
-        private string _gmailUserName => _appSettings.GetAppSetting("smtpUser", false);
-        private string _gmailPassword => _appSettings.GetAppSetting("smtpPassword", false);
+        private string GmailServer => _appSettings.GetAppSetting("smtpServer", false);
+        private long GmailPort => Convert.ToInt64(_appSettings.GetAppSetting("smtpPort", false));
+        private string GmailUserName => _appSettings.GetAppSetting("smtpUser", false);
+        private string GmailPassword => _appSettings.GetAppSetting("smtpPassword", false);
 
         AttachmentCollection IGmailMessage.Attachments { get => base.Attachments; }
         MailAddressCollection IGmailMessage.CC { get => base.CC; }
@@ -51,12 +51,14 @@ namespace sourceBackup.Portal.Areas.Mail
             {
                 if (this.From.ToString() == string.Empty)
                 {
-                    this.From = new MailAddress(_gmailUserName);
+                    this.From = new MailAddress(GmailUserName);
                 }
 
-                System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
-                newClient.EnableSsl = true;
-                newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
+                var newClient = new SmtpClient(GmailServer, (int)GmailPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new System.Net.NetworkCredential(GmailUserName, GmailPassword)
+                };
                 await newClient.SendMailAsync(this);
                 returnValue = true;
             }
@@ -77,9 +79,11 @@ namespace sourceBackup.Portal.Areas.Mail
             try
             {
 
-                System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
-                newClient.EnableSsl = true;
-                newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
+                var newClient = new SmtpClient(GmailServer, (int)GmailPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new System.Net.NetworkCredential(GmailUserName, GmailPassword)
+                };
                 await newClient.SendMailAsync(message);
                 returnValue = true;
             }
@@ -106,11 +110,13 @@ namespace sourceBackup.Portal.Areas.Mail
                 gMessage.To.Add(new MailAddress(toAddress));
                 gMessage.Subject = subject;
                 gMessage.Body = messageBody;
-                gMessage.From = new MailAddress(_gmailUserName);
+                gMessage.From = new MailAddress(GmailUserName);
 
-                System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
-                newClient.EnableSsl = true;
-                newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
+                var newClient = new SmtpClient(GmailServer, (int)GmailPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new System.Net.NetworkCredential(GmailUserName, GmailPassword)
+                };
                 await newClient.SendMailAsync(gMessage);
                 returnValue = true;
             }
@@ -139,13 +145,15 @@ namespace sourceBackup.Portal.Areas.Mail
                 gMessage.To.Add(new MailAddress(toAddress));
                 gMessage.Subject = subject;
                 gMessage.Body = messageBody;
-                gMessage.From = new MailAddress(_gmailUserName);
+                gMessage.From = new MailAddress(GmailUserName);
 
                 gMessage.Attachments.Add(attachment);
 
-                System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
-                newClient.EnableSsl = true;
-                newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
+                var newClient = new SmtpClient(GmailServer, (int)GmailPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new System.Net.NetworkCredential(GmailUserName, GmailPassword)
+                };
                 await newClient.SendMailAsync(gMessage);
                 returnValue = true;
             }

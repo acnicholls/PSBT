@@ -8,7 +8,7 @@ namespace sourceBackup
     /// <summary>
     /// About form, describes the project, the author, and relevent licence data
     /// </summary>
-    public class frmAbout : System.Windows.Forms.Form
+    public class FrmAbout : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Button cmdOK;
 		private System.Windows.Forms.Label labelVersion;
@@ -16,19 +16,19 @@ namespace sourceBackup
 		private System.Windows.Forms.Label labelDisclaimer;
 		private System.Windows.Forms.Label labelAdvertise;
 
-		private ProjectInfo info;
+		private readonly ProjectInfo info;
 		private System.Windows.Forms.LinkLabel labelRequests;
 		private System.Windows.Forms.LinkLabel labelThanks;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
         /// <summary>
         /// default constructor with changes.  Instantiates local class
         /// </summary>
-		public frmAbout()
+		public FrmAbout()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -64,7 +64,7 @@ namespace sourceBackup
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmAbout));
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FrmAbout));
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelRequests = new System.Windows.Forms.LinkLabel();
 			this.cmdOK = new System.Windows.Forms.Button();
@@ -94,7 +94,7 @@ namespace sourceBackup
 			this.labelRequests.TabStop = true;
 			this.labelRequests.Text = "For Change Requests Click Here";
 			this.labelRequests.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.labelRequests.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+			this.labelRequests.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
 			// 
 			// cmdOK
 			// 
@@ -102,7 +102,7 @@ namespace sourceBackup
 			this.cmdOK.Name = "cmdOK";
 			this.cmdOK.TabIndex = 0;
 			this.cmdOK.Text = "OK";
-			this.cmdOK.Click += new System.EventHandler(this.button1_Click);
+			this.cmdOK.Click += new System.EventHandler(this.Button1_Click);
 			// 
 			// labelDescription
 			// 
@@ -144,7 +144,7 @@ namespace sourceBackup
 			this.labelThanks.TabStop = true;
 			this.labelThanks.Text = "Compression routine thanks to GeraldGibson.net";
 			this.labelThanks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.labelThanks.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelThanks_LinkClicked);
+			this.labelThanks.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LabelThanks_LinkClicked);
 			// 
 			// pictureBox1
 			// 
@@ -176,7 +176,7 @@ namespace sourceBackup
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "About Project Source Backup Tool";
 			this.TopMost = true;
-			this.Load += new System.EventHandler(this.frmAbout_Load);
+			this.Load += new System.EventHandler(this.FrmAbout_Load);
 			this.ResumeLayout(false);
 
 		}
@@ -188,10 +188,9 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void LinkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			string address = "";
-			address = "http://acnlop.dyndns.org/?op=support";
+			var address = "http://acnlop.dyndns.org/?op=support";
 			//address += "?Subject=Project Source backup Tool Change Request";
 			Process myProcess = new Process();
 			myProcess.StartInfo.FileName = address;
@@ -206,7 +205,7 @@ namespace sourceBackup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-		private void button1_Click(object sender, System.EventArgs e)
+		private void Button1_Click(object sender, System.EventArgs e)
 		{
 			this.Close();
 		}
@@ -216,7 +215,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void frmAbout_Load(object sender, System.EventArgs e)
+		private void FrmAbout_Load(object sender, System.EventArgs e)
 		{
 			string message = "Version: " + info.Version.ToString() + "\n";
 			message += "Manufacturer: " + info.Manufacturer.ToString() + "\n";
@@ -240,10 +239,9 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void labelThanks_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		private void LabelThanks_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			string address = "";
-			address = "http://geraldgibson.net/dnn/Home/CZipFileCompression/tabid/148/Default.aspx";
+			var address = "http://geraldgibson.net/dnn/Home/CZipFileCompression/tabid/148/Default.aspx";
 			Process myProcess = new Process();
 			myProcess.StartInfo.FileName = address;
 			myProcess.StartInfo.UseShellExecute = true;

@@ -9,7 +9,7 @@ namespace sourceBackup
     /// <summary>
     /// the main form of the application
     /// </summary>
-    public class frmMain : System.Windows.Forms.Form
+    public class FrmMain : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -39,7 +39,7 @@ namespace sourceBackup
 		private System.Windows.Forms.Label lblBackupFileName;
 		private System.Windows.Forms.MenuItem miMainDefault;
         // non component properties
-		private ArrayList removeList = new ArrayList(5);
+		private ArrayList removeList = new ArrayList();
 		private bool CompileFound = false;
 		private bool validCompress = true;
 		private static bool fileMode = false;
@@ -56,9 +56,9 @@ namespace sourceBackup
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
-		public frmMain()
+		public FrmMain()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -88,7 +88,7 @@ namespace sourceBackup
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmMain));
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FrmMain));
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtProjectLocation = new System.Windows.Forms.TextBox();
 			this.cmdProjectLocation = new System.Windows.Forms.Button();
@@ -144,7 +144,7 @@ namespace sourceBackup
 			this.cmdProjectLocation.Size = new System.Drawing.Size(24, 20);
 			this.cmdProjectLocation.TabIndex = 1;
 			this.cmdProjectLocation.Text = "...";
-			this.cmdProjectLocation.Click += new System.EventHandler(this.cmdProjectLocation_Click);
+			this.cmdProjectLocation.Click += new System.EventHandler(this.CmdProjectLocation_Click);
 			// 
 			// label2
 			// 
@@ -171,7 +171,7 @@ namespace sourceBackup
 			this.cmdBackupLocation.Size = new System.Drawing.Size(24, 20);
 			this.cmdBackupLocation.TabIndex = 3;
 			this.cmdBackupLocation.Text = "...";
-			this.cmdBackupLocation.Click += new System.EventHandler(this.cmdBackupLocation_Click);
+			this.cmdBackupLocation.Click += new System.EventHandler(this.CmdBackupLocation_Click);
 			// 
 			// cmdGo
 			// 
@@ -180,7 +180,7 @@ namespace sourceBackup
 			this.cmdGo.Size = new System.Drawing.Size(69, 23);
 			this.cmdGo.TabIndex = 6;
 			this.cmdGo.Text = "Backup";
-			this.cmdGo.Click += new System.EventHandler(this.cmdGo_Click);
+			this.cmdGo.Click += new System.EventHandler(this.CmdGo_Click);
 			// 
 			// chkDebug
 			// 
@@ -211,7 +211,7 @@ namespace sourceBackup
 			// 
 			this.mnuClear.Index = 0;
 			this.mnuClear.Text = "&Clear";
-			this.mnuClear.Click += new System.EventHandler(this.mnuClear_Click);
+			this.mnuClear.Click += new System.EventHandler(this.MnuClear_Click);
 			// 
 			// mnuSepMain
 			// 
@@ -222,7 +222,7 @@ namespace sourceBackup
 			// 
 			this.mnuExit.Index = 3;
 			this.mnuExit.Text = "E&xit";
-			this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+			this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
 			// 
 			// mnuProjectProfiles
 			// 
@@ -238,14 +238,14 @@ namespace sourceBackup
 			// 
 			this.mnuSaveProfile.Index = 0;
 			this.mnuSaveProfile.Text = "&Save Profile...";
-			this.mnuSaveProfile.Click += new System.EventHandler(this.mnuSaveProfile_Click);
+			this.mnuSaveProfile.Click += new System.EventHandler(this.MnuSaveProfile_Click);
 			// 
 			// mnuDeleteProfile
 			// 
 			this.mnuDeleteProfile.Enabled = false;
 			this.mnuDeleteProfile.Index = 1;
 			this.mnuDeleteProfile.Text = "&Delete Profile";
-			this.mnuDeleteProfile.Click += new System.EventHandler(this.mnuDeleteProfile_Click);
+			this.mnuDeleteProfile.Click += new System.EventHandler(this.MnuDeleteProfile_Click);
 			// 
 			// mnuSepProjects
 			// 
@@ -269,13 +269,13 @@ namespace sourceBackup
 			// 
 			this.mnuContents.Index = 0;
 			this.mnuContents.Text = "&Contents";
-			this.mnuContents.Click += new System.EventHandler(this.mnuContents_Click);
+			this.mnuContents.Click += new System.EventHandler(this.MnuContents_Click);
 			// 
 			// mnuAbout
 			// 
 			this.mnuAbout.Index = 1;
 			this.mnuAbout.Text = "&About";
-			this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
+			this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
 			// 
 			// txtBackupName
 			// 
@@ -284,7 +284,7 @@ namespace sourceBackup
 			this.txtBackupName.Size = new System.Drawing.Size(336, 20);
 			this.txtBackupName.TabIndex = 4;
 			this.txtBackupName.Text = "";
-			this.txtBackupName.DoubleClick += new System.EventHandler(this.txtBackupName_DoubleClick);
+			this.txtBackupName.DoubleClick += new System.EventHandler(this.TxtBackupName_DoubleClick);
 			// 
 			// lblBackupFileName
 			// 
@@ -313,7 +313,7 @@ namespace sourceBackup
 			// 
 			this.miMainDefault.Index = 1;
 			this.miMainDefault.Text = "&Default Folder...";
-			this.miMainDefault.Click += new System.EventHandler(this.miMainDefault_Click);
+			this.miMainDefault.Click += new System.EventHandler(this.MiMainDefault_Click);
 			// 
 			// frmMain
 			// 
@@ -338,8 +338,8 @@ namespace sourceBackup
 			this.Name = "frmMain";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Project Source Backup Tool";
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.frmMain_Closing);
-			this.Load += new System.EventHandler(this.frmMain_Load);
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
+			this.Load += new System.EventHandler(this.FrmMain_Load);
 			((System.ComponentModel.ISupportInitialize)(this.sbMainPanel1)).EndInit();
 			this.ResumeLayout(false);
 
@@ -374,14 +374,14 @@ namespace sourceBackup
 			}
 			
 			WriteLog("Entering Main Form.");
-			Application.Run(new frmMain());
+			Application.Run(new FrmMain());
 		}
 		/// <summary>
 		/// click here to tell Project Source backup Tool where to find your source location.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void cmdProjectLocation_Click(object sender, System.EventArgs e)
+		private void CmdProjectLocation_Click(object sender, System.EventArgs e)
 		{
 			// find default project location
 			RegistryKey profileLocation = Registry.CurrentUser;
@@ -404,7 +404,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void cmdBackupLocation_Click(object sender, System.EventArgs e)
+		private void CmdBackupLocation_Click(object sender, System.EventArgs e)
 		{
 			// find default project location
 			RegistryKey profileLocation = Registry.CurrentUser;
@@ -445,7 +445,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void cmdGo_Click(object sender, System.EventArgs e)
+		private void CmdGo_Click(object sender, System.EventArgs e)
 		{
 			bool valid = true;
 			CompileFound = false;
@@ -463,7 +463,7 @@ namespace sourceBackup
 			dest = this.txtBackupLocation.Text.ToString();
 			file = this.txtBackupName.Text.ToString();
 			// check the filename for invalid characters
-			if(!CheckForInvalidChars(file))
+			if(!StringFunctions.CheckForInvalidChars(file))
 			{
 				// build a message to show the user invalid characters
 				string message = "Please enter a Windows(tm) VALID filename.\n";
@@ -544,14 +544,14 @@ namespace sourceBackup
 						if(exit == DialogResult.Yes)
 							Application.Exit();
 						else
-							this.mnuClear_Click(this,EventArgs.Empty);
+							this.MnuClear_Click(this,EventArgs.Empty);
 					}
 				}
 			}
 		}
 
 
-		private void frmMain_Load(object sender, System.EventArgs e)
+		private void FrmMain_Load(object sender, System.EventArgs e)
 		{
 				LoadProfiles();
 		}
@@ -561,7 +561,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuProfiles_Click(object sender, System.EventArgs e)
+		private void MnuProfiles_Click(object sender, System.EventArgs e)
 		{
 			MenuItem profile = (MenuItem)sender;
 			string profileName = profile.Text.ToString();
@@ -648,9 +648,9 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuAbout_Click(object sender, System.EventArgs e)
+		private void MnuAbout_Click(object sender, System.EventArgs e)
 		{
-			frmAbout about = new frmAbout();
+			FrmAbout about = new FrmAbout();
 			about.ShowDialog(this);
 		}
 		/// <summary>
@@ -659,7 +659,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuSaveProfile_Click(object sender, System.EventArgs e)
+		private void MnuSaveProfile_Click(object sender, System.EventArgs e)
 		{
 			if((this.txtProjectLocation.Text.Length > 0) & (this.txtBackupName.Text.Length > 0) & (this.txtBackupLocation.Text.Length > 0))
 			{
@@ -668,14 +668,14 @@ namespace sourceBackup
 				parts[2] = this.txtBackupLocation.Text.ToString();
 				parts[3] = this.txtBackupName.Text.ToString();
 				parts[4] = Convert.ToString(Convert.ToInt32(this.chkDebug.Checked));
-				frmProfile profile;
+				FrmProfile profile;
 				if(fileMode)
 				{
-					profile = new frmProfile(parts, true);
+					profile = new FrmProfile(parts, true);
 				}
 				else
 				{
-					profile = new frmProfile(parts);
+					profile = new FrmProfile(parts);
 				}
 				sbMainPanel1.Text = "Please enter a profile name.";
 				profile.ShowDialog(this);
@@ -693,7 +693,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuExit_Click(object sender, System.EventArgs e)
+		private void MnuExit_Click(object sender, System.EventArgs e)
 		{
 			this.Close();
 		}
@@ -702,7 +702,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuDeleteProfile_Click(object sender, System.EventArgs e)
+		private void MnuDeleteProfile_Click(object sender, System.EventArgs e)
 		{
 			//TODO: set changed[bool] when buttons clicked 
 			if(parts[0] == null)
@@ -734,7 +734,7 @@ namespace sourceBackup
 					}
 					finally
 					{
-						this.mnuClear_Click(this,System.EventArgs.Empty);
+						this.MnuClear_Click(this,System.EventArgs.Empty);
 						LoadProfiles();
 					}
 				}
@@ -746,7 +746,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuClear_Click(object sender, System.EventArgs e)
+		private void MnuClear_Click(object sender, System.EventArgs e)
 		{
 			WriteLog("Got to mnuClear_Click");
 			this.chkDebug.Checked = false;
@@ -834,7 +834,7 @@ namespace sourceBackup
 					foreach(FileInfo profile in projFile)
 					{
 						string profileName = profile.Name.Substring(0,profile.Name.Length - 5);
-						this.mnuProfile.MenuItems.Add(profileName, new System.EventHandler(this.mnuProfiles_Click));
+						this.mnuProfile.MenuItems.Add(profileName, new System.EventHandler(this.MnuProfiles_Click));
 					}
 				}
 			}
@@ -848,7 +848,7 @@ namespace sourceBackup
 					string[] profiles = storage.GetSubKeyNames();
 					foreach(string profile in profiles)
 					{
-						this.mnuProfile.MenuItems.Add(profile, new System.EventHandler(this.mnuProfiles_Click));
+						this.mnuProfile.MenuItems.Add(profile, new System.EventHandler(this.MnuProfiles_Click));
 					}
 				}
 			}
@@ -1046,8 +1046,6 @@ namespace sourceBackup
 		/// </summary>
 		private void DeleteNULLFilesFromZip(Shell32.FolderItems Source, Shell32.FolderItem TempFolder)
 		{
-			Shell32.ShellClass sc = new Shell32.ShellClass();
-			
 			//for each file that we find with the name _DELETE_ME_ cut and
 			//paste it into the TempFolder
 			foreach(Shell32.FolderItem item in Source)
@@ -1124,7 +1122,7 @@ namespace sourceBackup
 			{
 				FileStream fs = File.Create(CurrentDir+"\\_DELETE_ME_");
 				fs.Close();
-				fs = null;
+				fs.Dispose();
 			}
 		}
 		
@@ -1202,8 +1200,8 @@ namespace sourceBackup
 
 			return ItemCount;
 		}
-
-		private void frmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		
+		private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			DialogResult result = MessageBox.Show("Are you sure you wish to exit?", "Confirm Exit...", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 			if(result == DialogResult.Yes)
@@ -1218,7 +1216,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void txtBackupName_DoubleClick(object sender, System.EventArgs e)
+		private void TxtBackupName_DoubleClick(object sender, System.EventArgs e)
 		{
 			int x = this.txtProjectLocation.Text.Length;
 			int y = this.txtBackupLocation.Text.Length;
@@ -1237,7 +1235,7 @@ namespace sourceBackup
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void mnuContents_Click(object sender, System.EventArgs e)
+		private void MnuContents_Click(object sender, System.EventArgs e)
 		{
 			string filelocation = Application.StartupPath + @"\Help\PrjSrcBckupToolHelp.chm";
 			FileInfo check = new FileInfo(filelocation);
@@ -1251,49 +1249,7 @@ namespace sourceBackup
 				MessageBox.Show("Your help file is missing, please re-run the installer.", "Missing help file...", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-		/// <summary>
-		/// Written by AC Nicholls
-		/// This procedure searches for Windows(tm) 'illegal' filename characters
-		/// As the folders entered are chosen via a GUI, there's no way to enter illegal folder names,
-		/// but the filename is chosen by the use and so this procedure.
-		/// </summary>
-		/// <param name="filename">inputs the string to search for illegal characters</param>
-		/// <returns>a boolean value representing the validity of the filename, false is invalid</returns>
-		private bool CheckForInvalidChars(string filename)
-		{
 
-			bool valid = true;
-			int loc = 0;
-
-			loc = filename.IndexOf(@"""");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"\");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"?");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"|");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"/");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@":");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"<");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@">");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"*");
-			if(loc > 0)
-				valid = false;
-			return valid;
-		}
 
 		private void DebugFileList(Shell32.Folder Source)
 		{
@@ -1330,7 +1286,7 @@ namespace sourceBackup
 
 		}
 
-		private void miMainDefault_Click(object sender, System.EventArgs e)
+		private void MiMainDefault_Click(object sender, System.EventArgs e)
 		{
 			this.fbDialog.Description = "Select the folder to use as default project folder.";
 			DialogResult result = this.fbDialog.ShowDialog(this);

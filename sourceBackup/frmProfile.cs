@@ -8,29 +8,29 @@ namespace sourceBackup
     /// <summary>
     /// Profile form.  Saves profile data to registry or file
     /// </summary>
-    public class frmProfile : System.Windows.Forms.Form
+    public class FrmProfile : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtProfileName;
 		private System.Windows.Forms.Button cmdGo;
 		private System.Windows.Forms.Button cmdCancel;
 
-		private string project;
-		private string backup;
-		private string zipName;
-		private string debug;
-		private string profileName;
-		private bool fileMode = false;
+		private readonly string project;
+		private readonly string backup;
+		private readonly string zipName;
+		private readonly string debug;
+		private readonly string profileName;
+		private readonly bool fileMode = false;
 
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
         /// <summary>
         /// default contructor
         /// </summary>
-		public frmProfile()
+		public FrmProfile()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -45,7 +45,7 @@ namespace sourceBackup
         /// non-default constructor.  assigns values to local properties depending on passed values
         /// </summary>
         /// <param name="profileParts">string list containing the 5 parts of the profile</param>
-		public frmProfile(string[] profileParts)
+		public FrmProfile(string[] profileParts)
 		{
 			//
 			// Required for Windows Form Designer support
@@ -68,7 +68,7 @@ namespace sourceBackup
         /// </summary>
         /// <param name="profileParts">string list containing the 5 parts of the profile</param>
         /// <param name="filemode">boolean determining whether profile is in registry or file</param>
-		public frmProfile(string[] profileParts, bool filemode)
+		public FrmProfile(string[] profileParts, bool filemode)
 		{
 			//
 			// Required for Windows Form Designer support
@@ -137,7 +137,7 @@ namespace sourceBackup
 			this.cmdGo.Name = "cmdGo";
 			this.cmdGo.TabIndex = 2;
 			this.cmdGo.Text = "OK";
-			this.cmdGo.Click += new System.EventHandler(this.cmdGo_Click);
+			this.cmdGo.Click += new System.EventHandler(this.CmdGo_Click);
 			// 
 			// cmdCancel
 			// 
@@ -145,7 +145,7 @@ namespace sourceBackup
 			this.cmdCancel.Name = "cmdCancel";
 			this.cmdCancel.TabIndex = 3;
 			this.cmdCancel.Text = "Cancel";
-			this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
+			this.cmdCancel.Click += new System.EventHandler(this.CmdCancel_Click);
 			// 
 			// frmProfile
 			// 
@@ -162,7 +162,7 @@ namespace sourceBackup
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Name Profile";
 			this.TopMost = true;
-			this.Load += new System.EventHandler(this.frmProfile_Load);
+			this.Load += new System.EventHandler(this.FrmProfile_Load);
 			this.ResumeLayout(false);
 
 		}
@@ -173,7 +173,7 @@ namespace sourceBackup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-		private void frmProfile_Load(object sender, System.EventArgs e)
+		private void FrmProfile_Load(object sender, System.EventArgs e)
 		{
 		   //DONETODO: take all the passed variables and assign them locally?
 			if(profileName != null)
@@ -185,7 +185,7 @@ namespace sourceBackup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-		private void cmdGo_Click(object sender, System.EventArgs e)
+		private void CmdGo_Click(object sender, System.EventArgs e)
 		{
 
 			string profileName = txtProfileName.Text.ToString();
@@ -195,7 +195,7 @@ namespace sourceBackup
 				{
 					try
 					{
-						bool valid = this.CheckForInvalidChars(profileName);
+						bool valid = StringFunctions.CheckForInvalidChars(profileName);
 						if(valid)
 						{
 							// save to a new file under the profiles directory
@@ -243,17 +243,12 @@ namespace sourceBackup
 					catch(System.Exception x)
 					{
 						MessageBox.Show(x.Message, "Profile not Saved...");
-						frmMain.parts[0] = "Failed";
+						FrmMain.parts[0] = "Failed";
 						return;
 					}
 					finally
 					{
-						frmMain.parts[0] = profileName;
-						profileName = "";
-						project = "";
-						backup = "";
-						zipName = "";
-						debug = "";
+						FrmMain.parts[0] = profileName;
 						this.Close();
 					}
 
@@ -273,17 +268,12 @@ namespace sourceBackup
 					catch(System.Exception x)
 					{
 						MessageBox.Show(x.Message, "Profile not Saved...");
-						frmMain.parts[0] = "Failed";
+						FrmMain.parts[0] = "Failed";
 						return;
 					}
 					finally
 					{
-						frmMain.parts[0] = profileName;
-						profileName = "";
-						project = "";
-						backup = "";
-						zipName = "";
-						debug = "";
+						FrmMain.parts[0] = profileName;
 						this.Close();
 					}
 				}
@@ -299,52 +289,10 @@ namespace sourceBackup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-		private void cmdCancel_Click(object sender, System.EventArgs e)
+		private void CmdCancel_Click(object sender, System.EventArgs e)
 		{
 			this.Close();
 		}
-
-        /// <summary>
-        /// checks the supplied filename for invalid windows filename characters
-        /// </summary>
-        /// <param name="filename">the string to check</param>
-        /// <returns>true/false</returns>
-		private bool CheckForInvalidChars(string filename)
-		{
-
-			bool valid = true;
-			int loc = 0;
-
-			loc = filename.IndexOf(@"""");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"\");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"?");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"|");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"/");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@":");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"<");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@">");
-			if(loc > 0)
-				valid = false;
-			loc = filename.IndexOf(@"*");
-			if(loc > 0)
-				valid = false;
-			return valid;
-		}
-
 
 	}
 }

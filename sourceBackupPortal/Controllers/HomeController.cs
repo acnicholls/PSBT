@@ -57,7 +57,7 @@ namespace sourceBackup.Portal.Controllers
                 var addres = new MailAddress(supportRequest.Email);
                 mailMessage.Subject = "Project Source Backup Tool";
                 mailMessage.From = addres;
-                if (supportRequest.ccEmail)
+                if (supportRequest.CarbonCopyUser)
                 {
                     mailMessage.CC.Add(addres);
                 }
