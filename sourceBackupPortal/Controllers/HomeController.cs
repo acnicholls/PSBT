@@ -6,6 +6,7 @@ using sourceBackup.Portal.Models;
 using System;
 using System.Diagnostics;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace sourceBackup.Portal.Controllers
 {
@@ -45,7 +46,7 @@ namespace sourceBackup.Portal.Controllers
         }
 
         [HttpPost]
-        public IActionResult Support(SupportRequest supportRequest)
+        public async Task<IActionResult> Support(SupportRequest supportRequest)
         {
             try
             {
@@ -62,7 +63,7 @@ namespace sourceBackup.Portal.Controllers
                 }
                 mailMessage.To.Add(toAddress);
                 mailMessage.Body = supportRequest.RequestBody;
-               supportRequest.SendSuccess = mailMessage.Send();
+               supportRequest.SendSuccess = await mailMessage.SendAsync();
             }
             catch(Exception ex)
             {

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Net.Mail;
 
 namespace sourceBackup.Portal.Areas.Mail.Interfaces
 {
@@ -16,13 +13,13 @@ namespace sourceBackup.Portal.Areas.Mail.Interfaces
         string Body { get; set; }
 
 
-        bool Send();
+        Task<bool> SendAsync();
 
-        bool Send(MailMessage message);
+        Task<bool> SendAsync(MailMessage message);
 
-        bool Send(string toAddress, string subject, string messageBody);
+        Task<bool> SendAsync(string toAddress, string subject, string messageBody);
 
-        bool Send(string toAddress, string subject, string messageBody, Attachment attachment);
+        Task<bool> SendAsync(string toAddress, string subject, string messageBody, Attachment attachment);
 
     }
 }

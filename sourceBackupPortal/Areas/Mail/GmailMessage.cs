@@ -3,6 +3,7 @@ using sourceBackup.Portal.Areas.Mail.Interfaces;
 using sourceBackup.Portal.Data.Interfaces;
 using System;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace sourceBackup.Portal.Areas.Mail
 {
@@ -43,7 +44,7 @@ namespace sourceBackup.Portal.Areas.Mail
         /// <summary>
         /// Sends the message. If no from address is given the message will be from <c>GmailUserName</c>@Gmail.com
         /// </summary>
-        public bool Send()
+        public async Task<bool> SendAsync()
         {
             bool returnValue = false;
             try
@@ -56,7 +57,7 @@ namespace sourceBackup.Portal.Areas.Mail
                 System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
                 newClient.EnableSsl = true;
                 newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
-                newClient.SendMailAsync(this);
+                await newClient.SendMailAsync(this);
                 returnValue = true;
             }
             catch (Exception ex)
@@ -66,15 +67,11 @@ namespace sourceBackup.Portal.Areas.Mail
             return returnValue;
         }
 
-        #endregion
-
-        #region Static Members
-
         /// <summary>
         /// Send a <c>System.Web.Mail.MailMessage</c> through the specified gmail account
         /// </summary>
         /// <param name="message"><c>System.Web.Mail.MailMessage</c> object to send</param>
-        public bool Send(MailMessage message)
+        public async Task<bool> SendAsync(MailMessage message)
         {
             bool returnValue = false;
             try
@@ -83,7 +80,7 @@ namespace sourceBackup.Portal.Areas.Mail
                 System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
                 newClient.EnableSsl = true;
                 newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
-                newClient.Send(message);
+                await newClient.SendMailAsync(message);
                 returnValue = true;
             }
             catch (Exception ex)
@@ -99,7 +96,7 @@ namespace sourceBackup.Portal.Areas.Mail
         /// <param name="toAddress">Recipients email address</param>
         /// <param name="subject">Message subject</param>
         /// <param name="messageBody">Message body</param>
-        public bool Send(string toAddress, string subject, string messageBody)
+        public async Task<bool> SendAsync(string toAddress, string subject, string messageBody)
         {
             bool returnValue = false;
             try
@@ -114,7 +111,7 @@ namespace sourceBackup.Portal.Areas.Mail
                 System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
                 newClient.EnableSsl = true;
                 newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
-                newClient.SendMailAsync(gMessage);
+                await newClient.SendMailAsync(gMessage);
                 returnValue = true;
             }
             catch (Exception ex)
@@ -123,7 +120,16 @@ namespace sourceBackup.Portal.Areas.Mail
             }
             return returnValue;
         }
-        public bool Send(string toAddress, string subject, string messageBody, Attachment attachment)
+
+        /// <summary>
+        /// sends an email through the configured gmail account, with attachments.
+        /// </summary>
+        /// <param name="toAddress">the address to send the email to</param>
+        /// <param name="subject">the subject of the email</param>
+        /// <param name="messageBody">the body of the email</param>
+        /// <param name="attachment">the attachment to send along with the email</param>
+        /// <returns></returns>
+        public async Task<bool> SendAsync(string toAddress, string subject, string messageBody, Attachment attachment)
         {
             bool returnValue = false;
             try
@@ -140,7 +146,7 @@ namespace sourceBackup.Portal.Areas.Mail
                 System.Net.Mail.SmtpClient newClient = new SmtpClient(_gmailServer, (int)_gmailPort);
                 newClient.EnableSsl = true;
                 newClient.Credentials = new System.Net.NetworkCredential(_gmailUserName, _gmailPassword);
-                newClient.Send(gMessage);
+                await newClient.SendMailAsync(gMessage);
                 returnValue = true;
             }
             catch (Exception ex)

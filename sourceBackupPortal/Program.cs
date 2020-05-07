@@ -36,7 +36,7 @@ namespace sourceBackup.Portal
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Debug);
                 }).UseNLog();
     }
 }
