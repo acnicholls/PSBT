@@ -7,7 +7,7 @@
 
 <h1>Support</h1>
 
-<h6>Here you can send a message to the developers, letting them know what you need to know, in order to get the most out of the product.  
+<h6>Here you can send a message to the developer, letting them know what you need to know, in order to get the most out of the product.  
     <br/>
     Enter your details below.
     </h6>
@@ -32,9 +32,9 @@ else
                         <input class="form-check-input" asp-for="CarbonCopyUser" /> @Html.DisplayNameFor(model => model.CarbonCopyUser)
                     </label>
                 </div>
-                <div class="form-group">
+                <div class="form-group text-area">
                     <label asp-for="RequestBody" class="control-label"></label>
-                    <input asp-for="RequestBody" class="form-text" />
+                    <textarea asp-for="RequestBody" class="form-control"></textarea>
                     <span asp-validation-for="RequestBody" class="text-danger"></span>
                 </div>
                 <div class="form-group">

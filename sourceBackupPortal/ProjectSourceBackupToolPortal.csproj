@@ -8,6 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Home\Images\**" />
+    <Content Remove="Views\Home\Images\**" />
+    <EmbeddedResource Remove="Views\Home\Images\**" />
+    <None Remove="Views\Home\Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Home\images\frmMain.png" />
+    <Content Remove="wwwroot\Home\images\menuProject.png" />
+    <Content Remove="wwwroot\Home\images\projectsMenu.png" />
+    <Content Remove="wwwroot\Home\images\removeDebugFiles.png" />
+    <Content Remove="wwwroot\Home\images\saveProfile.png" />
+    <Content Remove="wwwroot\Home\images\selectBackupFolder.png" />
+    <Content Remove="wwwroot\Home\images\selectProjectFolder.png" />
+    <Content Remove="wwwroot\Home\images\Start.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
@@ -24,6 +42,21 @@
     <Compile Update="Data\AppSettings.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Home\Support.cshtml" />
+    <None Include="Views\Home\Tutorial.cshtml" />
+    <None Include="wwwroot\Home\images\frmMain.png" />
+    <None Include="wwwroot\Home\images\menuProject.png" />
+    <None Include="wwwroot\Home\images\projectsMenu.png" />
+    <None Include="wwwroot\Home\images\removeDebugFiles.png" />
+    <None Include="wwwroot\Home\images\saveProfile.png" />
+    <None Include="wwwroot\Home\images\selectBackupFolder.png" />
+    <None Include="wwwroot\Home\images\selectProjectFolder.png" />
+    <None Include="wwwroot\Home\images\Start.png" />
   </ItemGroup>
 
 </Project>
