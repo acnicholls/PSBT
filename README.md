@@ -7,6 +7,10 @@ Project Source Backup Tool is a project that I started before I learned of versi
 - removes debug and release folders to save space
 - uses WINDOWS(TM) shell compression, so there's no need for (other) third party compression tools.
 
+### What's New in Version 1.4.1
+ - fixing a bug when profile name has an underscore
+ - created a website, in aspnetcore3.1
+ - updated to run on win10, needed an application manifest
 
 ### What's New in Version 1.4
 
