@@ -19,10 +19,10 @@
 else
 {
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-lg-12">
             <form asp-action="Support">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+                <div class="form-group col-4">
                     <label asp-for="Email" class="control-label"></label>
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
@@ -34,7 +34,7 @@ else
                 </div>
                 <div class="form-group text-area">
                     <label asp-for="RequestBody" class="control-label"></label>
-                    <textarea asp-for="RequestBody" class="form-control"></textarea>
+                    <textarea asp-for="RequestBody" class="form-control text-area"></textarea>
                     <span asp-validation-for="RequestBody" class="text-danger"></span>
                 </div>
                 <div class="form-group">
