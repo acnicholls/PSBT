@@ -1,16 +1,21 @@
 ﻿@model sourceBackup.Portal.Models.SupportRequest
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration 
 
 @{
     ViewData["Title"] = "Support";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
 <h1>Support</h1>
 
-<h6>Here you can send a message to the developer, letting them know what you need to know, in order to get the most out of the product.  
-    <br/>
+<h6>
+    Here you can send a message to the developer, letting them know what you need to know, in order to get the most out of the product.
+    <br />
     Enter your details below.
-    </h6>
+</h6>
 <hr />
 @if (Model.SendSuccess)
 {
@@ -19,27 +24,46 @@
 else
 {
     <div class="row">
-        <div class="col-md-4 col-lg-12">
+        <div class="col-12">
             <form asp-action="Support">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group col-4">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="CarbonCopyUser" /> @Html.DisplayNameFor(model => model.CarbonCopyUser)
+                        </label>
+                    </div>
                 </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="CarbonCopyUser" /> @Html.DisplayNameFor(model => model.CarbonCopyUser)
-                    </label>
-                </div>
-                <div class="form-group text-area">
+                <div class="row col-12 form-group text-area">
                     <label asp-for="RequestBody" class="control-label"></label>
-                    <textarea asp-for="RequestBody" class="form-control text-area"></textarea>
+                    <textarea asp-for="RequestBody" class="form-control text-area" style="height:200px;"></textarea>
                     <span asp-validation-for="RequestBody" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+
+                    <div class="g-recaptcha" data-sitekey="@(Configuration.GetValue<string>("reCaptcha:SiteKey"))"></div>
+                </div>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <ul>
+                        @foreach(var modelState in ViewData.ModelState.Values)
+                        {
+                            foreach(var error in modelState.Errors)
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        }
+                    </ul>
+                }
+                <div class="form-group">
                     <input type="submit" value="Send Request" class="btn btn-primary" />
                 </div>
+
             </form>
         </div>
     </div>

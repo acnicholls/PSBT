@@ -50,20 +50,23 @@ namespace sourceBackup.Portal.Controllers
         {
             try
             {
-                var mailMessage = (IGmailMessage)_serviceProvider.GetService(typeof(IGmailMessage));
-
-                var toAddress = new MailAddress(_appSettings.GetAppSetting("adminEmail"));
-
-                var addres = new MailAddress(supportRequest.Email);
-                mailMessage.Subject = "Project Source Backup Tool";
-                mailMessage.From = addres;
-                if (supportRequest.CarbonCopyUser)
+                if (ModelState.IsValid)
                 {
-                    mailMessage.CC.Add(addres);
+                    var mailMessage = (IGmailMessage)_serviceProvider.GetService(typeof(IGmailMessage));
+
+                    var toAddress = new MailAddress(_appSettings.GetAppSetting("adminEmail"));
+
+                    var addres = new MailAddress(supportRequest.Email);
+                    mailMessage.Subject = "Project Source Backup Tool";
+                    mailMessage.From = addres;
+                    if (supportRequest.CarbonCopyUser)
+                    {
+                        mailMessage.CC.Add(addres);
+                    }
+                    mailMessage.To.Add(toAddress);
+                    mailMessage.Body = supportRequest.RequestBody;
+                    supportRequest.SendSuccess = await mailMessage.SendAsync();
                 }
-                mailMessage.To.Add(toAddress);
-                mailMessage.Body = supportRequest.RequestBody;
-               supportRequest.SendSuccess = await mailMessage.SendAsync();
             }
             catch(Exception ex)
             {
