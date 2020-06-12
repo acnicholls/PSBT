@@ -39,7 +39,7 @@ namespace sourceBackup
 		private System.Windows.Forms.Label lblBackupFileName;
 		private System.Windows.Forms.MenuItem miMainDefault;
         // non component properties
-		private ArrayList removeList = new ArrayList();
+		private ArrayList RemoveList = new ArrayList();
 		private bool CompileFound = false;
 		private bool validCompress = true;
 		private static bool fileMode = false;
@@ -529,7 +529,7 @@ namespace sourceBackup
 						CompileFound = CheckSubDirs(d);
 						if(CompileFound)
 						{
-							foreach(DirectoryInfo remove in removeList)
+							foreach(DirectoryInfo remove in RemoveList)
 							{
 								remove.Delete(true);
 							}
@@ -874,7 +874,7 @@ namespace sourceBackup
 					{
 						if((di.Name == "Debug")|(di.Name == "Release"))
 						{
-							removeList.Add(di);
+							RemoveList.Add(di);
 							CompileFound = true;
 							continue;							
 						}

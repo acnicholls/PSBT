@@ -248,3 +248,4 @@ ModelManifest.xml
 
 # key for signing output assemblies
 keypair.snk
+*.pubxml

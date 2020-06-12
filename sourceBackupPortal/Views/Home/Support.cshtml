@@ -1,6 +1,8 @@
 ﻿@model sourceBackup.Portal.Models.SupportRequest
+@using Microsoft.AspNetCore.Mvc
 @using Microsoft.Extensions.Configuration
-@inject IConfiguration Configuration 
+
+@inject IConfiguration Configuration
 
 @{
     ViewData["Title"] = "Support";
@@ -40,26 +42,23 @@ else
                     </div>
                 </div>
                 <div class="row col-12 form-group text-area">
-                    <label asp-for="RequestBody" class="control-label"></label>
+                    <label asp-for="RequestBody" class="control-label">email Body (put your request details here)</label>
                     <textarea asp-for="RequestBody" class="form-control text-area" style="height:200px;"></textarea>
                     <span asp-validation-for="RequestBody" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-
                     <div class="g-recaptcha" data-sitekey="@(Configuration.GetValue<string>("reCaptcha:SiteKey"))"></div>
                 </div>
                 @if (!ViewData.ModelState.IsValid)
                 {
-                    <ul>
-                        @foreach(var modelState in ViewData.ModelState.Values)
+                    <span class="text-danger">
+                        @foreach (var error in ViewData.ModelState["g-recaptcha-response"].Errors)
                         {
-                            foreach(var error in modelState.Errors)
-                            {
-                                <li>@error.ErrorMessage</li>
-                            }
+                            @error.ErrorMessage<br/>
                         }
-                    </ul>
+                    </span>
                 }
+                <div class="form-group"></div>
                 <div class="form-group">
                     <input type="submit" value="Send Request" class="btn btn-primary" />
                 </div>

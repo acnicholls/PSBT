@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using sourceBackup.Portal.Data.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace sourceBackup.Portal.Data
 {
@@ -9,6 +10,7 @@ namespace sourceBackup.Portal.Data
         [Required]
         [GoogleReCaptchaValidation]
         [BindProperty(Name ="g-recaptcha-response")]
-        public string GoogleReCaptchResponse { get; set; }
+        [DisplayName("Google reCAPTCHA Response")]
+        public string GoogleReCaptchaResponse { get; set; }
     }
 }

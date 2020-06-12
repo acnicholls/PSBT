@@ -12,7 +12,7 @@ namespace sourceBackup.Portal.Data.Validation
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            Lazy<ValidationResult> errorResult = new Lazy<ValidationResult>(() => new ValidationResult("Google reCAPTCHA validation failed", new String[] { validationContext.MemberName }));
+            Lazy<ValidationResult> errorResult = new Lazy<ValidationResult>(() => new ValidationResult("The Google reCAPTCHA validation failed.", new String[] { validationContext.MemberName }));
             if (value == null || String.IsNullOrWhiteSpace(value.ToString()))
             {
                 return errorResult.Value;
