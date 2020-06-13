@@ -62,4 +62,8 @@
     <None Include="wwwroot\Home\images\Start.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\App_Data\SetupFile\" />
+  </ItemGroup>
+
 </Project>

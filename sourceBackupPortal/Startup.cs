@@ -12,6 +12,8 @@ using sourceBackup.Portal.Data;
 using sourceBackup.Portal.Data.Interfaces;
 using System;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using sourceBackup.Portal.Areas.Download.Interfaces;
+using sourceBackup.Portal.Areas.Download;
 
 namespace sourceBackup.Portal
 {
@@ -56,6 +58,7 @@ namespace sourceBackup.Portal
             services.AddSingleton<IAppSettings, AppSettings>();
             services.AddTransient<IGmailMessage, GmailMessage>();
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<ISetupFile, SetupFile>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
