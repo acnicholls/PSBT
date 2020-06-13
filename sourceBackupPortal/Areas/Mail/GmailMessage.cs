@@ -49,7 +49,7 @@ namespace sourceBackup.Portal.Areas.Mail
             bool returnValue = false;
             try
             {
-                if (this.From.ToString() == string.Empty)
+                if (this.From == null || this.From.ToString() == string.Empty)
                 {
                     this.From = new MailAddress(GmailUserName);
                 }
