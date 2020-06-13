@@ -5,11 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using sourceBackup.Portal.Areas.Identity;
 using sourceBackup.Portal.Areas.Mail;
 using sourceBackup.Portal.Areas.Mail.Interfaces;
 using sourceBackup.Portal.Data;
 using sourceBackup.Portal.Data.Interfaces;
 using System;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace sourceBackup.Portal
 {
@@ -53,6 +55,7 @@ namespace sourceBackup.Portal
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<IAppSettings, AppSettings>();
             services.AddTransient<IGmailMessage, GmailMessage>();
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
