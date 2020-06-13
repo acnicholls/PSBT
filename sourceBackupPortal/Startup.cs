@@ -15,9 +15,16 @@ namespace sourceBackup.Portal
 {
     public class Startup
     {
-
+        /// <summary>
+        /// the configuration of the runtime
+        /// </summary>
         public IConfiguration Configuration { get; }
 
+
+        /// <summary>
+        /// load settings from local storage
+        /// </summary>
+        /// <param name="env">pre-configured environment</param>
         public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder();
@@ -28,6 +35,8 @@ namespace sourceBackup.Portal
             Configuration = builder.Build();
         }
 
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -36,8 +45,11 @@ namespace sourceBackup.Portal
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            /// custom setup
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<IAppSettings, AppSettings>();
             services.AddTransient<IGmailMessage, GmailMessage>();
