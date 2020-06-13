@@ -21,5 +21,7 @@ namespace sourceBackup.Portal.Areas.Mail.Interfaces
 
         Task<bool> SendAsync(string toAddress, string subject, string messageBody, Attachment attachment);
 
+        bool IsBodyHtml { get; set; }
+
     }
 }

@@ -27,7 +27,12 @@ namespace sourceBackup.Portal.Areas.Mail
         AttachmentCollection IGmailMessage.Attachments { get => base.Attachments; }
         MailAddressCollection IGmailMessage.CC { get => base.CC; }
         MailAddressCollection IGmailMessage.To { get => base.To; }
-        //MailAddress IGmailMessage.From 
+        /// <summary>
+        /// allow access to the IsBodyHtml parameter, so urls are not incorrectly coded when the user clicks links
+        /// </summary>
+
+        bool IGmailMessage.IsBodyHtml { get => base.IsBodyHtml; set { base.IsBodyHtml = value; } }
+
         #endregion
 
         #region Public Members

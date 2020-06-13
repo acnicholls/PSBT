@@ -37,6 +37,7 @@ namespace sourceBackup.Portal.Areas.Identity
             _gmailMessage.To.Add(email);
             _gmailMessage.Subject = subject;
             _gmailMessage.Body = htmlMessage;
+            _gmailMessage.IsBodyHtml = true;
             await _gmailMessage.SendAsync();
         }
     }
