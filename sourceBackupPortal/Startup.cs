@@ -35,6 +35,7 @@ namespace sourceBackup.Portal
             builder.SetBasePath(env.ContentRootPath);
             builder.AddJsonFile("appsettings.json", false, true);
             builder.AddJsonFile($"appsettings.{Environment.MachineName}.json", true, true);
+            builder.AddJsonFile("hosting.json", optional: true);
             builder.AddUserSecrets<Program>();
             Configuration = builder.Build();
         }

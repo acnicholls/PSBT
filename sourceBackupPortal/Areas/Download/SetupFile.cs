@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using sourceBackup.Portal.Areas.Download.Interfaces;
 using System;
@@ -17,9 +18,14 @@ namespace sourceBackup.Portal.Areas.Download
         private readonly string _setupFileFolder = AppDomain.CurrentDomain.BaseDirectory + @"\App_Data\SetupFile";
         private readonly string _setupFileName = "ProjectSourceBackupToolSetup.msi";
 
-        public SetupFile(ILogger<SetupFile> logger)
+        public SetupFile(ILogger<SetupFile> logger, IConfiguration configuration)
         {
             _logger = logger;
+
+            if (configuration.GetSection("DownloadLocation").Exists())
+            {
+                _setupFileFolder = AppDomain.CurrentDomain.BaseDirectory + configuration.GetSection("DownloadLocation").Value;
+            }
         }
 
 

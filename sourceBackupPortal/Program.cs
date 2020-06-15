@@ -32,6 +32,9 @@ namespace sourceBackup.Portal
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+#if !DEBUG
+                    webBuilder.UseKestrel();
+#endif
                 })
                 .ConfigureLogging(logging =>
                 {
