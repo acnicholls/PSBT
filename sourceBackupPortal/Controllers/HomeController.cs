@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Logging;
 using sourceBackup.Portal.Areas.Download.Interfaces;
 using sourceBackup.Portal.Areas.Mail.Interfaces;
@@ -6,9 +8,10 @@ using sourceBackup.Portal.Data.Interfaces;
 using sourceBackup.Portal.Models;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Net.Mail;
 using System.Threading.Tasks;
+
+
 
 namespace sourceBackup.Portal.Controllers
 {
@@ -82,6 +85,7 @@ namespace sourceBackup.Portal.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Download()
         {
             // send the setup file
