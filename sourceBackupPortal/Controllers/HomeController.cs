@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Logging;
 using sourceBackup.Portal.Areas.Download.Interfaces;
 using sourceBackup.Portal.Areas.Mail.Interfaces;

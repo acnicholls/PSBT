@@ -1,19 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using sourceBackup.Portal.Areas.Download;
+using sourceBackup.Portal.Areas.Download.Interfaces;
 using sourceBackup.Portal.Areas.Identity;
 using sourceBackup.Portal.Areas.Mail;
 using sourceBackup.Portal.Areas.Mail.Interfaces;
 using sourceBackup.Portal.Data;
 using sourceBackup.Portal.Data.Interfaces;
 using System;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using sourceBackup.Portal.Areas.Download.Interfaces;
-using sourceBackup.Portal.Areas.Download;
 
 namespace sourceBackup.Portal
 {
@@ -54,8 +55,9 @@ namespace sourceBackup.Portal
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            /// custom setup
+            // add custom entities to DI container
             services.AddSingleton<IConfiguration>(Configuration);
+            services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
             services.AddSingleton<IAppSettings, AppSettings>();
             services.AddTransient<IGmailMessage, GmailMessage>();
             services.AddTransient<IEmailSender, EmailSender>();
