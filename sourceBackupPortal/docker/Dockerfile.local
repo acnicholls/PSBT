@@ -1,0 +1,51 @@
+# FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as base
+# WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as build
+WORKDIR /app
+
+COPY ./ProjectSourceBackupToolPortal.csproj /app
+
+RUN dotnet restore
+
+COPY ./Areas ./
+COPY ./Controllers ./
+COPY ./Data ./
+COPY ./Models ./
+COPY ./Properties ./
+COPY ./Views ./
+COPY ./wwwroot ./
+COPY ./Program.cs ./
+COPY ./Startup.cs ./
+
+# RUN dotnet build -c RELEASE -o /app/out
+
+# FROM build as publish
+# RUN dotnet publish -c RELEASE -o /app/out
+
+# FROM base as final
+
+ENV PATH="${PATH}:/root/.dotnet/tools"
+ENV ASPNETCORE_ENVIRONMENT=RELEASE
+ENV ASPNETCORE_URLS=https://+;http://+
+
+RUN dotnet tool install --global dotnet-ef
+
+# WORKDIR /app
+
+# COPY --from=publish /app/out .
+RUN dotnet build -c RELEASE
+# COPY ./ProjectSourceBackupToolPortal.csproj ./
+COPY ./appsettings.local.json ./appsettings.RELEASE.json
+COPY ./appsettings.json ./
+COPY ./docker/secrets.local.json ./secrets.json
+COPY ./docker/entrypoint.sh ./
+COPY ./docker/hosting.local.json ./hosting.json
+
+RUN chmod +x /app/entrypoint.sh 
+
+EXPOSE 5000
+EXPOSE 5001
+EXPOSE 80
+
+CMD /bin/bash /app/entrypoint.sh

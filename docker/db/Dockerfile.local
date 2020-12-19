@@ -1,7 +1,18 @@
 FROM mcr.microsoft.com/mssql/server
 
-ENV EULA=true
-ENV SA_PASSORD=d3faultP4ss_4PSBT
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=d3faultP4ss_4PSBT
+
+WORKDIR /app
+
+# copy database backup?
+COPY ./createDbAndUser.sql .
+
+# RUN (/opt/mssql/bin/sqlservr --accept-eula & ) | grep "Service Broker manager has started" \
+    # && /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'd3faultP4ss_4PSBT' -i createDbAndUser.sql \
+    # && pkill sqlservr
+
+# attempt to just let the migration run and build?
 
 
 

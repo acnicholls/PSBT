@@ -3,16 +3,25 @@ services:
   psbtportal:
     build:
       context: ./sourceBackupPortal
-      dockerfile: ./docker/portal/Dockerfile.local
-      image: psbtportal:local
+      dockerfile: ./docker/Dockerfile.local
+    image: psbtportal:local
     ports:
+      - 5000:5000
+      - 5001:5001
       - 80:80
+      - 443:443
     depends_on: 
       - psbtdb
     links:
       - psbtdb
   psbtdb:
+#     build:
+#       context: ./docker/db
+#       dockerfile: ./Dockerfile.local
     image: mcr.microsoft.com/mssql/server
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=
+      - SA_PASSWORD=d3faultP4ss_4PSBT
+    ports:
+      - 1433:1433
+      - 1434:1434
