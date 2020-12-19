@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+  psbtportal:
+    build:
+      context: ./sourceBackupPortal
+      dockerfile: ./docker/portal/Dockerfile.local
+      image: psbtportal:local
+    ports:
+      - 80:80
+    depends_on: 
+      - psbtdb
+    links:
+      - psbtdb
+  psbtdb:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=

@@ -1,6 +1,7 @@
 ﻿using sourceBackup.Portal.Data;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace sourceBackup.Portal.Models
 {
@@ -18,5 +19,8 @@ namespace sourceBackup.Portal.Models
         [DisplayName("email body")]
         public string RequestBody { get; set; }
         public bool SendSuccess { get; set; } = false;
+
+        public bool SendError { get; set; } = false;
+        public Exception Error { get; set; }
     }
 }

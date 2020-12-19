@@ -1,0 +1,16 @@
+sourceBackup
+sourceBackupSetup
+sourceBackupHelp
+Resources
+
+**/appsettings.*.json
+**/secrets.*.json
+
+
+
+.gitignore
+.gitattributes
+azure-test.sh
+LICENCE.txt
+*.sln
+README.md

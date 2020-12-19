@@ -78,3 +78,7 @@ text-area {
     height:100%;
     width:100%;
 }
+
+errorMessage {
+    text-decoration-color: red;
+}

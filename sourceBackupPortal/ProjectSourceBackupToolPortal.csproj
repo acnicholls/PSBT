@@ -5,6 +5,7 @@
     <UserSecretsId>aspnet-ProjectSourceBackupToolPortal-215513CB-E818-4C31-AB21-8F51D6582EFD</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <RootNamespace>sourceBackup.Portal</RootNamespace>
+    <StartupObject>sourceBackup.Portal.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

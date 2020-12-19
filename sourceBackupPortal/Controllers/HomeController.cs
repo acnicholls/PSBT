@@ -72,10 +72,13 @@ namespace sourceBackup.Portal.Controllers
                     mailMessage.To.Add(toAddress);
                     mailMessage.Body = supportRequest.RequestBody;
                     supportRequest.SendSuccess = await mailMessage.SendAsync();
+                    supportRequest.SendError = false;
                 }
             }
             catch (Exception ex)
             {
+                supportRequest.SendError = true;
+                supportRequest.Error = ex;
                 _logger.LogError(ex, "Home.Suuport()");
             }
             return View(supportRequest);
